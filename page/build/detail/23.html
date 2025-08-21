@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sm151 - Nuclear Data</title>
+    <!-- Link to detail page stylesheet -->
+    <link rel="stylesheet" href="/static/css/detail.css">
+    <style>
+        /* NEW NAVIGATION BAR STYLES */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* changed from 'left' to 'flex-start' */
+            margin-bottom: 25px;
+            padding: 12px 20px;
+            background: rgba(240, 234, 214, 0.95);
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .nav-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .home-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #6c9ce0, #4a77c9);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .home-link:hover {
+            background: linear-gradient(135deg, #7ca9f0, #5a87d9);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* stack the left nav-group vertically */
+        .nav-bar .nav-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <!-- INSTITUTIONAL LOGOS -->
+    <div class="logos">
+        <img src="/static/images/cern_logo2.png" 
+            alt="CERN Logo" 
+            class="logo"
+            title="European Organization for Nuclear Research">
+        <img src="/static/images/n_TOF_logo.png" 
+            alt="n_TOF Logo" 
+            class="logo"
+            title="Neutron Time-of-Flight Facility at CERN">
+    </div>
+
+    <!-- NEW NAVIGATION BAR -->
+    <div class="nav-bar">
+        <!-- LEFT COLUMN: Back + Home stacked -->
+        <div class="nav-group nav-left">
+            <a class="home-link" 
+               href="../index.html" 
+               title="Start a new search">
+                Home
+            </a>
+            <a class="back-link" 
+               href="../search.html">
+                ← Back to Search Results
+            </a>
+        </div>
+        
+        <div class="nav-group">
+            <!-- Right-side controls (if any) remain empty for now -->
+        </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <h1>Sm151</h1>
+    
+    <!-- DATA DOWNLOAD SECTION -->
+    
+        <p>
+            <a href="n_TOF_data/sm151.txt" download>
+                Download n_TOF MACS Data (Tab-separated ASCII format)
+            </a>
+        </p>
+    
+
+    <!-- METADATA SECTION -->
+    <!-- Displays fundamental properties of the isotope -->
+    <section class="metadata">
+        <h2>Sm151 Basic Properties</h2>
+
+        
+        
+            
+                
+                <p><strong>Q value:</strong> 8.258 [MeV]</p>
+            
+        
+            
+                
+                <p><strong>MACS (n_TOF) @ 30 keV:</strong> 3.08E+03 ± 0.15E+03 [mb]</p>
+            
+        
+            
+                
+                <p><strong>Main Publication of the n_TOF Collaboration:</strong> <br>Measurement of the 151Sm(n,γ) cross section from 0.6 eV to 1 MeV via the neutron time-of-flight technique at the CERN n_TOF facility<br>S. Marrone, U. Abbondanno, G. Aerts, F. Alvarez-Velarde, H. Alvarez-Pol, S. Andriamonje, J. Andrzejewski, G. Badurek, P. Baumann, F. Bečvář et al. (The n_TOF Collaboration)<br>Physical Review C 73, 034604 (2006)</p>
+            
+        
+            
+                
+                <p><strong>Comment:</strong> <br>Full energy range n_TOF experimental data.</p>
+            
+        
+            
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                            <p><strong>REF:</strong> <a href="https://dx.doi.org/10.1103/PhysRevC.73.034604" target="_blank" rel="noopener">https://dx.doi.org/10.1103/PhysRevC.73.034604</a></p>
+                        
+                    
+                
+            
+        
+    </section>
+
+    <!-- DATA SOURCE ATTRIBUTION -->
+    <p>
+        Q value obtained from the <a href="https://nds.iaea.org/talys/" target="_blank" rel="noopener noreferrer">TALYS-2.0</a> program.
+    </p>
+
+    <!-- MAIN DATA TABLE -->
+    <!-- Displays ground-state MACS values at different temperatures -->
+    <section class="item-details">
+        <h2>Sm151 Ground-state MACS at Different Temperatures</h2>
+        <table>
+            <thead>
+                <tr>
+                    
+                        <th>kT (keV)</th>
+                    
+                        <th>n_TOF (mb)</th>
+                    
+                        <th>TALYS-2.0 (mb)</th>
+                    
+                        <th>ENDF/B-8.1 (mb)</th>
+                    
+                        <th>JEFF-3.3 (mb)</th>
+                    
+                        <th>JENDL-5 (mb)</th>
+                    
+                        <th>Reaction_rate (cm³/mol/s)</th>
+                    
+                        <th>SEF</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        
+                            <td>5</td>
+                        
+                            <td>10.65E+03 ± 0.50E+03</td>
+                        
+                            <td>9745.20</td>
+                        
+                            <td>9862.38</td>
+                        
+                            <td>12930.01</td>
+                        
+                            <td>10106.00</td>
+                        
+                            <td>6.29E+05</td>
+                        
+                            <td>0.95</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>7.5</td>
+                        
+                            <td>7.96E+03 ± 0.39E+03</td>
+                        
+                            <td>7081.40</td>
+                        
+                            <td>7428.79</td>
+                        
+                            <td>9337.40</td>
+                        
+                            <td>7536.55</td>
+                        
+                            <td>5.76E+05</td>
+                        
+                            <td>0.94</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>10</td>
+                        
+                            <td>6.50E+03 ± 0.32E+03</td>
+                        
+                            <td>5357.20</td>
+                        
+                            <td>6090.44</td>
+                        
+                            <td>7417.16</td>
+                        
+                            <td>6150.39</td>
+                        
+                            <td>5.43E+05</td>
+                        
+                            <td>0.93</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>12.5</td>
+                        
+                            <td>5.57E+03 ± 0.27E+03</td>
+                        
+                            <td>4391.90</td>
+                        
+                            <td>5233.58</td>
+                        
+                            <td>6201.63</td>
+                        
+                            <td>5271.18</td>
+                        
+                            <td>5.20E+05</td>
+                        
+                            <td>0.93</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>15</td>
+                        
+                            <td>4.92E+03 ± 0.24E+03</td>
+                        
+                            <td>3806.60</td>
+                        
+                            <td>4632.74</td>
+                        
+                            <td>5356.41</td>
+                        
+                            <td>4655.35</td>
+                        
+                            <td>5.04E+05</td>
+                        
+                            <td>0.93</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>17.5</td>
+                        
+                            <td>4.44E+03 ± 0.21E+03</td>
+                        
+                            <td>3319.20</td>
+                        
+                            <td>4183.95</td>
+                        
+                            <td>4732.31</td>
+                        
+                            <td>4194.00</td>
+                        
+                            <td>4.91E+05</td>
+                        
+                            <td>0.94</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>20</td>
+                        
+                            <td>4.06E+03 ± 0.19E+03</td>
+                        
+                            <td>3000.00</td>
+                        
+                            <td>3832.57</td>
+                        
+                            <td>4250.55</td>
+                        
+                            <td>3831.50</td>
+                        
+                            <td>4.80E+05</td>
+                        
+                            <td>0.95</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>25</td>
+                        
+                            <td>3.49E+03 ± 0.16E+03</td>
+                        
+                            <td>2494.80</td>
+                        
+                            <td>3309.22</td>
+                        
+                            <td>3548.56</td>
+                        
+                            <td>3290.18</td>
+                        
+                            <td>4.61E+05</td>
+                        
+                            <td>0.97</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>30</td>
+                        
+                            <td>3.08E+03 ± 0.15E+03</td>
+                        
+                            <td>2173.20</td>
+                        
+                            <td>2929.98</td>
+                        
+                            <td>3053.92</td>
+                        
+                            <td>2898.43</td>
+                        
+                            <td>4.46E+05</td>
+                        
+                            <td>0.99</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>35</td>
+                        
+                            <td>2.78E+03 ± 0.14E+03</td>
+                        
+                            <td>1888.20</td>
+                        
+                            <td>2637.34</td>
+                        
+                            <td>2681.66</td>
+                        
+                            <td>2597.70</td>
+                        
+                            <td>4.35E+05</td>
+                        
+                            <td>1.01</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>40</td>
+                        
+                            <td>2.53E+03 ± 0.12E+03</td>
+                        
+                            <td>1697.50</td>
+                        
+                            <td>2402.06</td>
+                        
+                            <td>2389.48</td>
+                        
+                            <td>2357.58</td>
+                        
+                            <td>4.23E+05</td>
+                        
+                            <td>1.03</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>45</td>
+                        
+                            <td>2.33E+03 ± 0.11E+03</td>
+                        
+                            <td>1528.40</td>
+                        
+                            <td>2207.35</td>
+                        
+                            <td>2153.53</td>
+                        
+                            <td>2160.38</td>
+                        
+                            <td>4.13E+05</td>
+                        
+                            <td>1.05</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>50</td>
+                        
+                            <td>2.15E+03 ± 0.10E+03</td>
+                        
+                            <td>1394.30</td>
+                        
+                            <td>2042.77</td>
+                        
+                            <td>1959.00</td>
+                        
+                            <td>1994.94</td>
+                        
+                            <td>4.02E+05</td>
+                        
+                            <td>1.07</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>60</td>
+                        
+                            <td>1.89E+03 ± 0.90E+02</td>
+                        
+                            <td>1183.10</td>
+                        
+                            <td>1778.27</td>
+                        
+                            <td>1657.55</td>
+                        
+                            <td>1731.78</td>
+                        
+                            <td>3.87E+05</td>
+                        
+                            <td>1.10</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>70</td>
+                        
+                            <td>1.69E+03 ± 0.80E+02</td>
+                        
+                            <td>1030.50</td>
+                        
+                            <td>1573.91</td>
+                        
+                            <td>1435.50</td>
+                        
+                            <td>1530.92</td>
+                        
+                            <td>3.74E+05</td>
+                        
+                            <td>1.11</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>85</td>
+                        
+                            <td>1.46E+03 ± 0.70E+02</td>
+                        
+                            <td>862.97</td>
+                        
+                            <td>1340.83</td>
+                        
+                            <td>1194.92</td>
+                        
+                            <td>1304.43</td>
+                        
+                            <td>3.56E+05</td>
+                        
+                            <td>1.13</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>100</td>
+                        
+                            <td>1.29E+03 ± 0.60E+02</td>
+                        
+                            <td>765.15</td>
+                        
+                            <td>1165.98</td>
+                        
+                            <td>1023.48</td>
+                        
+                            <td>1136.23</td>
+                        
+                            <td>3.41E+05</td>
+                        
+                            <td>1.13</td>
+                        
+                    </tr>
+                
+            </tbody>
+        </table>
+    </section>
+    
+    <!-- VISUALIZATION SECTION -->
+    <!-- Displays MACS comparison plots if available -->
+    
+    <section class="macs-plot">
+        <h2>MACS Visualization for Sm151</h2>
+
+        <!-- Plot container with side-by-side comparison -->
+        <div class="macs-plot-row">
+            <!-- Left panel: Main MACS plot -->
+            <div class="plot-card">
+                <img 
+                    src="../static/images/sm151_macs.png" 
+                    alt="Ground-state MACS Plot for Sm151"
+                    title="Comparison of MACS values from different sources"
+                >
+                <p class="plot-caption">MACS Comparison</p>
+            </div>
+
+            <!-- Right panel: Ratio plot -->
+            <div class="plot-card">
+                <img 
+                    src="../static/images/ratio/sm151_macs_ratio.png" 
+                    alt="Ratio plot for Sm151"
+                    title="Ratio to reference values"
+                >
+                <p class="plot-caption">Ratio to the n_TOF MACS</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- FOOTER WITH DATA SOURCES AND ATTRIBUTIONS -->
+    <footer>
+        <h3>Data Sources and References</h3>
+        <p>
+            <b>Full list of n_TOF experiment references:</b> 
+            <a href="https://twiki.cern.ch/NTOFPublic/ListOfPublicationsShortLoA" target="_blank" rel="noopener noreferrer">
+                TWiki at CERN
+            </a><br>
+            
+            <b>Reaction rates:</b> Calculated using n_TOF ground state MACS<br>
+            
+            <b>Experimental data (KADoNiS):</b> 
+            <a href="https://exp-astro.physik.uni-frankfurt.de/kadonis/index.php" target="_blank" rel="noopener noreferrer">
+                KADoNiS database
+            </a><br>
+            
+            <b>TALYS MACS values:</b> Calculated with 
+            <a href="https://nds.iaea.org/talys/" target="_blank" rel="noopener noreferrer">
+                TALYS-2.0
+            </a> using default parameters<br>
+            
+            <b>Stellar Enhancement Factor (SEF):</b> Evaluated with TALYS-2.0, by dividing the stellar capture reaction rate to the ground-state rate<br>.
+            
+            <b>Evaluated MACS values:</b> calculated with evaluated cross-sections available from the
+            <a href="https://www-nds.iaea.org/exfor/endf.htm" target="_blank" rel="noopener noreferrer">
+                IAEA database
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

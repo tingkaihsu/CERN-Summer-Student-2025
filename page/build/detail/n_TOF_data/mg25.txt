@@ -1,0 +1,5 @@
+# Mg25 Maxwellian-Averaged Cross Sections (MACS)
+# REF: (no reference found)
+# Cross sections and uncertainties in millibarns (mb)
+# kT [keV]	n_TOF [mb]	± uncertainty [mb]
+30.0	3.9	0.2

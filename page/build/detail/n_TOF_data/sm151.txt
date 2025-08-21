@@ -1,0 +1,4 @@
+# Sm151 Maxwellian-Averaged Cross Sections (MACS)
+# REF https://dx.doi.org/10.1103/PhysRevC.73.034604
+# Cross sections and uncertainties in millibarns (mb)
+# kT [keV]	n_TOF [mb]	± uncertainty [mb]

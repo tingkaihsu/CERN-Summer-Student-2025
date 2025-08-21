@@ -1,0 +1,86 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n_TOF MACS DATABASE</title>
+    <!-- Main stylesheet for consistent styling across the application -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="content-wrapper">
+        <!-- INSTITUTION LOGOS -->
+        <!-- Left-aligned n_TOF logo -->
+        <div class="logo-left">
+            <img src="/static/images/n_TOF_logo.png" 
+                 alt="Neutron Time-of-Flight Facility Logo" 
+                 class="logo"
+                 title="CERN n_TOF Facility">
+        </div>
+
+        <!-- Right-aligned CERN logo -->
+        <div class="logo-right">
+            <img src="/static/images/cern_logo2.png" 
+                 alt="European Organization for Nuclear Research Logo" 
+                 class="logo"
+                 title="CERN - European Laboratory for Particle Physics">
+        </div>
+
+        <!-- PAGE HEADER -->
+        <h1>n_TOF DATABASE of Maxwellian-Averaged (n,γ) Cross Sections</h1>
+        
+        <!-- SEARCH FORM -->
+        <!-- Form that submits to the search results page -->
+        <form action="/search.html" method="get">
+            <!-- Search input field -->
+            <input type="text" 
+                   name="q" 
+                   placeholder="Enter Isotope ..." 
+                   required
+                   aria-label="Isotope search input">
+            
+            <!-- Submit button -->
+            <button type="submit">Search</button>
+        </form>
+        
+        <!-- SEARCH INSTRUCTIONS -->
+        <p class="instruction">
+            Enter element and mass number (e.g., "ce140", "140ce", "140-ce", "ce-140")
+        </p>
+        
+        <!-- ALTERNATIVE NAVIGATION -->
+        <!-- Link to browse all isotopes in the database -->
+        <a href="/all-items.html" class="browse-link">
+            Browse All Isotopes
+        </a>
+        
+        <!-- DOWNLOAD LINK FOR MACS DATA -->
+        <a href="https://ntofdb.web.cern.ch/static/all_nTOF_MACS.txt" 
+           class="browse-link"
+           download="nTOF_MACS_Data.txt">
+            Download n_TOF MACS Data (Tab-separated ASCII format)
+        </a>
+    </div>
+
+    <!-- PAGE FOOTER -->
+    <footer>
+        <!-- DATA SOURCE ATTRIBUTION -->
+        <p>
+            <strong>Full list of n_TOF experiment references:</strong> 
+            Available on the 
+            <a href="https://twiki.cern.ch/NTOFPublic/ListOfPublicationsShortLoA" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                n_TOF TWiki at CERN
+            </a>
+        </p>
+        
+        <!-- CONTACT INFORMATION -->
+        <p>
+            For questions or suggestions, contact:<a href="mailto:ting-kai.hsu@cern.ch">Ting-Kai Hsu</a> and <a href="mailto:alberto.mengoni@cern.ch">Alberto Mengoni</a>
+        </p>
+    </footer>
+</body>
+</html>

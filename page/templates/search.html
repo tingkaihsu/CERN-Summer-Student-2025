@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search Results - n_TOF MACS Database</title>
+    <!-- Link to search results stylesheet -->
+    <link rel="stylesheet" href="/static/css/search_results.css">
+    
+    <script>
+        // GLOBAL STATE MANAGEMENT
+        let allItems = [];        // Stores all isotope items from server
+        let currentResults = [];  // Stores current filtered/sorted results
+        let currentSort = 'relevance';  // Current sorting method
+        let currentQuery = '';    // Current search query
+
+        /**
+         * INITIALIZATION FUNCTION
+         * - Loads isotope data from server
+         * - Parses URL parameters for search state
+         * - Initializes search with parameters
+         */
+        async function initSearch() {
+            // Load isotope data from JSON endpoint
+            const response = await fetch('/items.json');
+            allItems = await response.json();
+
+            // Parse URL parameters to maintain state across page loads
+            const urlParams = new URLSearchParams(window.location.search);
+            currentQuery = urlParams.get('q') || '';
+            currentSort = urlParams.get('sort') || 'relevance';
+
+            // Initialize form controls with current state
+            document.querySelector('input[name="q"]').value = currentQuery;
+            document.querySelector('select[name="sort"]').value = currentSort;
+
+            // Execute initial search with current parameters
+            performSearch();
+        }
+
+        /**
+         * NORMALIZE SEARCH STRING
+         * Prepares strings for consistent comparison by:
+         * - Converting to lowercase
+         * - Removing non-alphanumeric characters
+         * @param {string} str - Input string
+         * @returns {string} Normalized string
+         */
+        function normalizeSearchString(str) {
+            return str.toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        /**
+         * CHARACTER-BASED SEARCH ALGORITHM
+         * Checks if title contains all characters in query (counting multiplicity)
+         * @param {string} title - Normalized title to search in
+         * @param {string} query - Normalized search query
+         * @returns {boolean} True if title contains all characters from query
+         */
+        function containsAllChars(title, query) {
+            if (query === '') return true;
+            
+            // Create frequency maps for characters
+            const titleMap = new Map();
+            const queryMap = new Map();
+            
+            // Count character frequency in title
+            for (const char of title) {
+                titleMap.set(char, (titleMap.get(char) || 0) + 1);
+            }
+            
+            // Count character frequency in query
+            for (const char of query) {
+                queryMap.set(char, (queryMap.get(char) || 0) + 1);
+            }
+            
+            // Verify title has required quantity of each character
+            for (const [char, count] of queryMap) {
+                if ((titleMap.get(char) || 0) < count) return false;
+            }
+            
+            return true;
+        }
+
+        /**
+         * FORMAT ISOTOPE TITLE
+         * Converts titles like "mg25", "au197", "u235" to "Mg25", "Au197", "U235".
+         * Handles both "symbol+number" (e.g. mg25) and "number+symbol" (e.g. 96Zr) patterns.
+         * Falls back to capitalizing the first character if pattern not recognized.
+         * @param {string} title
+         * @returns {string} formatted title
+         */
+        function formatIsotopeTitle(title) {
+            if (!title) return title;
+            const t = title.trim();
+
+            // Case: letters followed by digits (e.g. mg25, au197, u235)
+            let m = t.match(/^([a-zA-Z]+)(\d.*)$/);
+            if (m) {
+                const letters = m[1];
+                const rest = m[2];
+                const formattedLetters = letters.charAt(0).toUpperCase() + letters.slice(1).toLowerCase();
+                return formattedLetters + rest;
+            }
+
+            // Case: digits followed by letters (e.g. 96Zr) -> normalize letter part
+            m = t.match(/^(\d+)([a-zA-Z].*)$/);
+            if (m) {
+                const nums = m[1];
+                const letters = m[2];
+                const formattedLetters = letters.charAt(0).toUpperCase() + letters.slice(1).toLowerCase();
+                return nums + formattedLetters;
+            }
+
+            // Fallback: capitalize first character
+            return t.charAt(0).toUpperCase() + t.slice(1);
+        }
+
+        /**
+         * MAIN SEARCH FUNCTION
+         * - Filters items based on current query
+         * - Updates results display
+         */
+        function performSearch() {
+            // Normalize query for consistent matching
+            const normalizedQuery = normalizeSearchString(currentQuery.trim());
+            
+            if (normalizedQuery === '') {
+                // Empty query: show all items
+                currentResults = [...allItems];
+            } else {
+                // Filter items using character-based matching
+                currentResults = allItems.filter(item => {
+                    const normalizedTitle = normalizeSearchString(item.title);
+                    return containsAllChars(normalizedTitle, normalizedQuery);
+                });
+            }
+            
+            // Sort and display results
+            sortResults();
+            updateResultsDisplay();
+            updateUrl();
+        }
+
+        /**
+         * SORTING FUNCTION
+         * Applies current sorting method to results
+         */
+        function sortResults() {
+            if (currentSort === 'title') {
+                // Alphabetical sorting by isotope name
+                currentResults.sort((a, b) => a.title.localeCompare(b.title));
+            }
+            // Relevance sort uses natural search order
+        }
+
+        /**
+         * RESULTS RENDERING FUNCTION
+         * - Updates result count display
+         * - Generates HTML for search results
+         */
+        function updateResultsDisplay() {
+            const totalResults = currentResults.length;
+            
+            // Update header with current query and result count
+            document.querySelector('h1').textContent = `Results for "${currentQuery}"`;
+            document.querySelector('p').textContent = `${totalResults} results found`;
+            
+            // Render results container
+            const resultsContainer = document.querySelector('.results');
+            resultsContainer.innerHTML = '';
+            
+            // Create result items
+            currentResults.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'result-item';
+
+                // Format the displayed title (e.g. mg25 -> Mg25)
+                const displayTitle = formatIsotopeTitle(item.title);
+
+                itemDiv.innerHTML = `
+                    <a href="detail/${item.id}.html">
+                        <h3>${displayTitle}</h3>
+                    </a>
+                `;
+                resultsContainer.appendChild(itemDiv);
+            });
+        }
+
+        /**
+         * URL STATE MANAGEMENT
+         * Updates browser URL to reflect current search state
+         * without reloading the page
+         */
+        function updateUrl() {
+            const params = new URLSearchParams({
+                q: currentQuery,
+                sort: currentSort
+            });
+            // Update URL without page reload
+            history.replaceState(null, '', `?${params.toString()}`);
+        }
+
+        /**
+         * SORTING HANDLER
+         * Triggered when user changes sort method
+         */
+        function handleSortChange() {
+            // Get new sort method and update results
+            currentSort = document.querySelector('select[name="sort"]').value;
+            sortResults();
+            updateResultsDisplay();
+            updateUrl();
+        }
+    </script>
+</head>
+<!-- Initialize search when page loads -->
+<body onload="initSearch()">
+    <!-- INSTITUTIONAL LOGOS -->
+    <div class="logos">
+        <img src="/static/images/cern_logo2.png" 
+             alt="CERN Logo" 
+             class="logo"
+             title="European Organization for Nuclear Research">
+        <img src="/static/images/n_TOF_logo.png" 
+             alt="n_TOF Logo" 
+             class="logo"
+             title="Neutron Time-of-Flight Facility at CERN">
+    </div>
+
+    <!-- NAVIGATION: NEW SEARCH LINK -->
+    <a href="index.html" 
+       style="color: #3498db; font-size: 1.2em; font-weight: bold;"
+       title="Start a new search">
+        Home
+    </a>
+
+    <!-- RESULTS HEADER (DYNAMICALLY UPDATED) -->
+    <h1>Results for ""</h1>
+    <p>0 results found</p>
+    
+    <!-- SEARCH CONTROLS SECTION -->
+    <div class="controls">
+        <!-- SEARCH FORM -->
+        <!-- Uses GET method to maintain shareable URLs -->
+        <form method="get" onsubmit="event.preventDefault(); currentQuery = this.q.value; performSearch();">
+            <!-- SEARCH INPUT FIELD -->
+            <input type="text" 
+                   name="q" 
+                   placeholder="Enter Isotope (e.g., Zr96, 96Zr)..." 
+                   aria-label="Isotope search input">
+            
+            <!-- SORTING CONTROLS -->
+            <div class="filter-group">
+                <label style="color: #ecf0f1;">Sort by:</label>
+                <select name="sort" onchange="handleSortChange()" aria-label="Sort results by">
+                    <option value="relevance">Relevance</option>
+                    <option value="title">Title (A-Z)</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <!-- RESULTS CONTAINER (DYNAMICALLY POPULATED) -->
+    <div class="results" aria-live="polite" aria-atomic="true">
+        <!-- JavaScript will populate this with search results -->
+    </div>
+</body>
+</html>

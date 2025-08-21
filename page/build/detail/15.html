@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Os186 - Nuclear Data</title>
+    <!-- Link to detail page stylesheet -->
+    <link rel="stylesheet" href="/static/css/detail.css">
+    <style>
+        /* NEW NAVIGATION BAR STYLES */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* changed from 'left' to 'flex-start' */
+            margin-bottom: 25px;
+            padding: 12px 20px;
+            background: rgba(240, 234, 214, 0.95);
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .nav-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .home-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #6c9ce0, #4a77c9);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .home-link:hover {
+            background: linear-gradient(135deg, #7ca9f0, #5a87d9);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* stack the left nav-group vertically */
+        .nav-bar .nav-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <!-- INSTITUTIONAL LOGOS -->
+    <div class="logos">
+        <img src="/static/images/cern_logo2.png" 
+            alt="CERN Logo" 
+            class="logo"
+            title="European Organization for Nuclear Research">
+        <img src="/static/images/n_TOF_logo.png" 
+            alt="n_TOF Logo" 
+            class="logo"
+            title="Neutron Time-of-Flight Facility at CERN">
+    </div>
+
+    <!-- NEW NAVIGATION BAR -->
+    <div class="nav-bar">
+        <!-- LEFT COLUMN: Back + Home stacked -->
+        <div class="nav-group nav-left">
+            <a class="home-link" 
+               href="../index.html" 
+               title="Start a new search">
+                Home
+            </a>
+            <a class="back-link" 
+               href="../search.html">
+                ← Back to Search Results
+            </a>
+        </div>
+        
+        <div class="nav-group">
+            <!-- Right-side controls (if any) remain empty for now -->
+        </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <h1>Os186</h1>
+    
+    <!-- DATA DOWNLOAD SECTION -->
+    
+        <p>
+            <a href="n_TOF_data/os186.txt" download>
+                Download n_TOF MACS Data (Tab-separated ASCII format)
+            </a>
+        </p>
+    
+
+    <!-- METADATA SECTION -->
+    <!-- Displays fundamental properties of the isotope -->
+    <section class="metadata">
+        <h2>Os186 Basic Properties</h2>
+
+        
+        
+            
+                
+                <p><strong>Q value:</strong> 6.290 [MeV]</p>
+            
+        
+            
+                
+                <p><strong>MACS (n_TOF) @ 30 keV:</strong> 414 ± 17 [mb]</p>
+            
+        
+            
+                
+                <p><strong>Main Publication of the n_TOF Collaboration:</strong> <br>Neutron physics of the Re/Os clock. I. Measurement of the (n,γ) cross sections of Os-186,187,188 at the CERN n_TOF facility<br>M. Mosconi, K. Fujii, A. Mengoni, C. Domingo-Pardo, F. Käppeler, U. Abbondanno, G. Aerts, H. Alvarez-Pol, F. Alvarez-Velarde, S. Andriamonje et al. (The n_TOF Collaboration)<br>Physical Review C 82, 015802 (2010)</p>
+            
+        
+            
+                
+                <p><strong>Comment:</strong> <br>Full energy range n_TOF experimental data.</p>
+            
+        
+            
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                            <p><strong>REF:</strong> <a href="https://dx.doi.org/10.1103/PhysRevC.82.015802" target="_blank" rel="noopener">https://dx.doi.org/10.1103/PhysRevC.82.015802</a></p>
+                        
+                    
+                
+            
+        
+    </section>
+
+    <!-- DATA SOURCE ATTRIBUTION -->
+    <p>
+        Q value obtained from the <a href="https://nds.iaea.org/talys/" target="_blank" rel="noopener noreferrer">TALYS-2.0</a> program.
+    </p>
+
+    <!-- MAIN DATA TABLE -->
+    <!-- Displays ground-state MACS values at different temperatures -->
+    <section class="item-details">
+        <h2>Os186 Ground-state MACS at Different Temperatures</h2>
+        <table>
+            <thead>
+                <tr>
+                    
+                        <th>kT (keV)</th>
+                    
+                        <th>n_TOF (mb)</th>
+                    
+                        <th>TALYS-2.0 (mb)</th>
+                    
+                        <th>ENDF/B-8.1 (mb)</th>
+                    
+                        <th>JEFF-3.3 (mb)</th>
+                    
+                        <th>JENDL-5 (mb)</th>
+                    
+                        <th>Reaction_rate (cm³/mol/s)</th>
+                    
+                        <th>SEF</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        
+                            <td>5</td>
+                        
+                            <td>1118 ± 44</td>
+                        
+                            <td>2054</td>
+                        
+                            <td>1287</td>
+                        
+                            <td>651</td>
+                        
+                            <td>1287</td>
+                        
+                            <td>6.60E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>8</td>
+                        
+                            <td>799 ± 32</td>
+                        
+                            <td>1518</td>
+                        
+                            <td>913</td>
+                        
+                            <td>606</td>
+                        
+                            <td>913</td>
+                        
+                            <td>5.97E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>10</td>
+                        
+                            <td>693 ± 28</td>
+                        
+                            <td>1318</td>
+                        
+                            <td>790</td>
+                        
+                            <td>571</td>
+                        
+                            <td>790</td>
+                        
+                            <td>5.79E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>12</td>
+                        
+                            <td>622 ± 26</td>
+                        
+                            <td>1189</td>
+                        
+                            <td>709</td>
+                        
+                            <td>540</td>
+                        
+                            <td>709</td>
+                        
+                            <td>5.69E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>15</td>
+                        
+                            <td>552 ± 23</td>
+                        
+                            <td>1059</td>
+                        
+                            <td>628</td>
+                        
+                            <td>503</td>
+                        
+                            <td>628</td>
+                        
+                            <td>5.65E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>20</td>
+                        
+                            <td>483 ± 20</td>
+                        
+                            <td>926</td>
+                        
+                            <td>546</td>
+                        
+                            <td>456</td>
+                        
+                            <td>546</td>
+                        
+                            <td>5.71E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>23</td>
+                        
+                            <td>456 ± 19</td>
+                        
+                            <td>871</td>
+                        
+                            <td>513</td>
+                        
+                            <td>434</td>
+                        
+                            <td>513</td>
+                        
+                            <td>5.78E+07</td>
+                        
+                            <td>1.01</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>25</td>
+                        
+                            <td>441 ± 19</td>
+                        
+                            <td>842</td>
+                        
+                            <td>495</td>
+                        
+                            <td>422</td>
+                        
+                            <td>495</td>
+                        
+                            <td>5.82E+07</td>
+                        
+                            <td>1.01</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>30</td>
+                        
+                            <td>414 ± 17</td>
+                        
+                            <td>785</td>
+                        
+                            <td>459</td>
+                        
+                            <td>395</td>
+                        
+                            <td>459</td>
+                        
+                            <td>5.99E+07</td>
+                        
+                            <td>1.01</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>40</td>
+                        
+                            <td>375 ± 16</td>
+                        
+                            <td>697</td>
+                        
+                            <td>408</td>
+                        
+                            <td>352</td>
+                        
+                            <td>408</td>
+                        
+                            <td>6.26E+07</td>
+                        
+                            <td>1.03</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>50</td>
+                        
+                            <td>347 ± 14</td>
+                        
+                            <td>635</td>
+                        
+                            <td>370</td>
+                        
+                            <td>319</td>
+                        
+                            <td>370</td>
+                        
+                            <td>6.48E+07</td>
+                        
+                            <td>1.04</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>60</td>
+                        
+                            <td>325 ± 13</td>
+                        
+                            <td>587</td>
+                        
+                            <td>339</td>
+                        
+                            <td>291</td>
+                        
+                            <td>339</td>
+                        
+                            <td>6.65E+07</td>
+                        
+                            <td>1.05</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>70</td>
+                        
+                            <td>307 ± 13</td>
+                        
+                            <td>550</td>
+                        
+                            <td>315</td>
+                        
+                            <td>268</td>
+                        
+                            <td>315</td>
+                        
+                            <td>6.78E+07</td>
+                        
+                            <td>1.06</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>80</td>
+                        
+                            <td>291 ± 12</td>
+                        
+                            <td>521</td>
+                        
+                            <td>294</td>
+                        
+                            <td>248</td>
+                        
+                            <td>294</td>
+                        
+                            <td>6.87E+07</td>
+                        
+                            <td>1.07</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>90</td>
+                        
+                            <td>278 ± 11</td>
+                        
+                            <td>498</td>
+                        
+                            <td>277</td>
+                        
+                            <td>232</td>
+                        
+                            <td>277</td>
+                        
+                            <td>6.97E+07</td>
+                        
+                            <td>1.08</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>100</td>
+                        
+                            <td>267 ± 11</td>
+                        
+                            <td>482</td>
+                        
+                            <td>262</td>
+                        
+                            <td>218</td>
+                        
+                            <td>262</td>
+                        
+                            <td>7.05E+07</td>
+                        
+                            <td>1.10</td>
+                        
+                    </tr>
+                
+            </tbody>
+        </table>
+    </section>
+    
+    <!-- VISUALIZATION SECTION -->
+    <!-- Displays MACS comparison plots if available -->
+    
+    <section class="macs-plot">
+        <h2>MACS Visualization for Os186</h2>
+
+        <!-- Plot container with side-by-side comparison -->
+        <div class="macs-plot-row">
+            <!-- Left panel: Main MACS plot -->
+            <div class="plot-card">
+                <img 
+                    src="../static/images/os186_macs.png" 
+                    alt="Ground-state MACS Plot for Os186"
+                    title="Comparison of MACS values from different sources"
+                >
+                <p class="plot-caption">MACS Comparison</p>
+            </div>
+
+            <!-- Right panel: Ratio plot -->
+            <div class="plot-card">
+                <img 
+                    src="../static/images/ratio/os186_macs_ratio.png" 
+                    alt="Ratio plot for Os186"
+                    title="Ratio to reference values"
+                >
+                <p class="plot-caption">Ratio to the n_TOF MACS</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- FOOTER WITH DATA SOURCES AND ATTRIBUTIONS -->
+    <footer>
+        <h3>Data Sources and References</h3>
+        <p>
+            <b>Full list of n_TOF experiment references:</b> 
+            <a href="https://twiki.cern.ch/NTOFPublic/ListOfPublicationsShortLoA" target="_blank" rel="noopener noreferrer">
+                TWiki at CERN
+            </a><br>
+            
+            <b>Reaction rates:</b> Calculated using n_TOF ground state MACS<br>
+            
+            <b>Experimental data (KADoNiS):</b> 
+            <a href="https://exp-astro.physik.uni-frankfurt.de/kadonis/index.php" target="_blank" rel="noopener noreferrer">
+                KADoNiS database
+            </a><br>
+            
+            <b>TALYS MACS values:</b> Calculated with 
+            <a href="https://nds.iaea.org/talys/" target="_blank" rel="noopener noreferrer">
+                TALYS-2.0
+            </a> using default parameters<br>
+            
+            <b>Stellar Enhancement Factor (SEF):</b> Evaluated with TALYS-2.0, by dividing the stellar capture reaction rate to the ground-state rate<br>.
+            
+            <b>Evaluated MACS values:</b> calculated with evaluated cross-sections available from the
+            <a href="https://www-nds.iaea.org/exfor/endf.htm" target="_blank" rel="noopener noreferrer">
+                IAEA database
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

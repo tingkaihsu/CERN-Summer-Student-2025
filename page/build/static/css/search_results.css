@@ -1,0 +1,107 @@
+/* === Logos === */
+.logos {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.12);
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+}
+
+/* === Page Base === */
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #f9f6ef;
+    color: #2c2c2c;
+    margin: 0;
+    padding: 20px;
+}
+
+/* === Headings === */
+h1 {
+    color: #7a5c00;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 2px solid #d3caa8;
+    padding-bottom: 5px;
+}
+
+/* === Controls Section === */
+.controls {
+    background: #f0ead6;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* === Results Section === */
+.results {
+    margin-top: 20px;
+}
+
+.result-item {
+    border: 1px solid #d3caa8;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background-color: #f9f6ef;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.result-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.result-item h3 {
+    color: #7a5c00;
+}
+
+/* === Pagination === */
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 8px 15px;
+    margin: 0 5px;
+    border: 1px solid #d3caa8;
+    border-radius: 5px;
+    background-color: #a67c00;
+    color: #2c2c2c;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination .current {
+    background-color: #b28f00;
+    color: #f9f6ef;
+}
+
+.pagination a:hover {
+    background-color: #d4af37;
+    transform: translateY(-1px);
+}
+.controls input[name="q"] {
+    width: 600px;       /* adjust as needed */
+    font-size: 1.1em;
+    padding: 8px;
+}

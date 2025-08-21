@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zr93 - Nuclear Data</title>
+    <!-- Link to detail page stylesheet -->
+    <link rel="stylesheet" href="/static/css/detail.css">
+    <style>
+        /* NEW NAVIGATION BAR STYLES */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* changed from 'left' to 'flex-start' */
+            margin-bottom: 25px;
+            padding: 12px 20px;
+            background: rgba(240, 234, 214, 0.95);
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .nav-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .home-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #6c9ce0, #4a77c9);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .home-link:hover {
+            background: linear-gradient(135deg, #7ca9f0, #5a87d9);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* stack the left nav-group vertically */
+        .nav-bar .nav-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <!-- INSTITUTIONAL LOGOS -->
+    <div class="logos">
+        <img src="/static/images/cern_logo2.png" 
+            alt="CERN Logo" 
+            class="logo"
+            title="European Organization for Nuclear Research">
+        <img src="/static/images/n_TOF_logo.png" 
+            alt="n_TOF Logo" 
+            class="logo"
+            title="Neutron Time-of-Flight Facility at CERN">
+    </div>
+
+    <!-- NEW NAVIGATION BAR -->
+    <div class="nav-bar">
+        <!-- LEFT COLUMN: Back + Home stacked -->
+        <div class="nav-group nav-left">
+            <a class="home-link" 
+               href="../index.html" 
+               title="Start a new search">
+                Home
+            </a>
+            <a class="back-link" 
+               href="../search.html">
+                ← Back to Search Results
+            </a>
+        </div>
+        
+        <div class="nav-group">
+            <!-- Right-side controls (if any) remain empty for now -->
+        </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <h1>Zr93</h1>
+    
+    <!-- DATA DOWNLOAD SECTION -->
+    
+        <p>
+            <a href="n_TOF_data/zr93.txt" download>
+                Download n_TOF MACS Data (Tab-separated ASCII format)
+            </a>
+        </p>
+    
+
+    <!-- METADATA SECTION -->
+    <!-- Displays fundamental properties of the isotope -->
+    <section class="metadata">
+        <h2>Zr93 Basic Properties</h2>
+
+        
+        
+            
+                
+                <p><strong>Q value:</strong> 8.219 [MeV]</p>
+            
+        
+            
+                
+                <p><strong>MACS (n_TOF) @ 30 keV:</strong> 96 ± 9 [mb]</p>
+            
+        
+            
+                
+                <p><strong>Main Publication of the n_TOF Collaboration:</strong> <br>The 93Zr(n,γ) reaction up to 8 keV neutron energy<br>G. Tagliente, P. M. Milazzo, K. Fujii, U. Abbondanno, G. Aerts, H. Alvarez, F. Alvarez-Velarde, S. Andriamonje, J. Andrzejewski, L. Audouin et al. (The n_TOF Collaboration)<br>Physical Review C 87, 014622 (2013)</p>
+            
+        
+            
+                
+                <p><strong>Comment:</strong> <br>MACS determined by experimental resolved resonance parameters up to 8 keV. Above 8 keV, renormalized cross section from JENDL-4.0 used.</p>
+            
+        
+            
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                            <p><strong>REF:</strong> <a href="https://dx.doi.org/10.1103/PhysRevC.87.014622" target="_blank" rel="noopener">https://dx.doi.org/10.1103/PhysRevC.87.014622</a></p>
+                        
+                    
+                
+            
+        
+    </section>
+
+    <!-- DATA SOURCE ATTRIBUTION -->
+    <p>
+        Q value obtained from the <a href="https://nds.iaea.org/talys/" target="_blank" rel="noopener noreferrer">TALYS-2.0</a> program.
+    </p>
+
+    <!-- MAIN DATA TABLE -->
+    <!-- Displays ground-state MACS values at different temperatures -->
+    <section class="item-details">
+        <h2>Zr93 Ground-state MACS at Different Temperatures</h2>
+        <table>
+            <thead>
+                <tr>
+                    
+                        <th>kT (keV)</th>
+                    
+                        <th>n_TOF (mb)</th>
+                    
+                        <th>doi_10.1080/18811248.2011.9711675 (mb)</th>
+                    
+                        <th>TALYS-2.0 (mb)</th>
+                    
+                        <th>ENDF/B-8.1 (mb)</th>
+                    
+                        <th>JEFF-3.3 (mb)</th>
+                    
+                        <th>JENDL-5 (mb)</th>
+                    
+                        <th>Reaction_rate (cm³/mol/s)</th>
+                    
+                        <th>SEF</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        
+                            <td>5</td>
+                        
+                            <td>347 ± 19</td>
+                        
+                            <td>354</td>
+                        
+                            <td>343</td>
+                        
+                            <td>390</td>
+                        
+                            <td>390</td>
+                        
+                            <td>323</td>
+                        
+                            <td>2.05E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>10</td>
+                        
+                            <td>215 ± 17</td>
+                        
+                            <td>223</td>
+                        
+                            <td>206</td>
+                        
+                            <td>237</td>
+                        
+                            <td>237</td>
+                        
+                            <td>207</td>
+                        
+                            <td>1.80E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>15</td>
+                        
+                            <td>160 ± 14</td>
+                        
+                            <td>166</td>
+                        
+                            <td>151</td>
+                        
+                            <td>174</td>
+                        
+                            <td>174</td>
+                        
+                            <td>157</td>
+                        
+                            <td>1.64E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>20</td>
+                        
+                            <td>129 ± 12</td>
+                        
+                            <td>134</td>
+                        
+                            <td>121</td>
+                        
+                            <td>139</td>
+                        
+                            <td>139</td>
+                        
+                            <td>128</td>
+                        
+                            <td>1.53E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>25</td>
+                        
+                            <td>110 ± 10</td>
+                        
+                            <td>114</td>
+                        
+                            <td>102</td>
+                        
+                            <td>117</td>
+                        
+                            <td>117</td>
+                        
+                            <td>109</td>
+                        
+                            <td>1.46E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        
+                            <td>30</td>
+                        
+                            <td>96 ± 9</td>
+                        
+                            <td>99</td>
+                        
+                            <td>90</td>
+                        
+                            <td>102</td>
+                        
+                            <td>102</td>
+                        
+                            <td>96</td>
+                        
+                            <td>1.39E+07</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+            </tbody>
+        </table>
+    </section>
+    
+    <!-- VISUALIZATION SECTION -->
+    <!-- Displays MACS comparison plots if available -->
+    
+    <section class="macs-plot">
+        <h2>MACS Visualization for Zr93</h2>
+
+        <!-- Plot container with side-by-side comparison -->
+        <div class="macs-plot-row">
+            <!-- Left panel: Main MACS plot -->
+            <div class="plot-card">
+                <img 
+                    src="../static/images/zr93_macs.png" 
+                    alt="Ground-state MACS Plot for Zr93"
+                    title="Comparison of MACS values from different sources"
+                >
+                <p class="plot-caption">MACS Comparison</p>
+            </div>
+
+            <!-- Right panel: Ratio plot -->
+            <div class="plot-card">
+                <img 
+                    src="../static/images/ratio/zr93_macs_ratio.png" 
+                    alt="Ratio plot for Zr93"
+                    title="Ratio to reference values"
+                >
+                <p class="plot-caption">Ratio to the n_TOF MACS</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- FOOTER WITH DATA SOURCES AND ATTRIBUTIONS -->
+    <footer>
+        <h3>Data Sources and References</h3>
+        <p>
+            <b>Full list of n_TOF experiment references:</b> 
+            <a href="https://twiki.cern.ch/NTOFPublic/ListOfPublicationsShortLoA" target="_blank" rel="noopener noreferrer">
+                TWiki at CERN
+            </a><br>
+            
+            <b>Reaction rates:</b> Calculated using n_TOF ground state MACS<br>
+            
+            <b>Experimental data (KADoNiS):</b> 
+            <a href="https://exp-astro.physik.uni-frankfurt.de/kadonis/index.php" target="_blank" rel="noopener noreferrer">
+                KADoNiS database
+            </a><br>
+            
+            <b>TALYS MACS values:</b> Calculated with 
+            <a href="https://nds.iaea.org/talys/" target="_blank" rel="noopener noreferrer">
+                TALYS-2.0
+            </a> using default parameters<br>
+            
+            <b>Stellar Enhancement Factor (SEF):</b> Evaluated with TALYS-2.0, by dividing the stellar capture reaction rate to the ground-state rate<br>.
+            
+            <b>Evaluated MACS values:</b> calculated with evaluated cross-sections available from the
+            <a href="https://www-nds.iaea.org/exfor/endf.htm" target="_blank" rel="noopener noreferrer">
+                IAEA database
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

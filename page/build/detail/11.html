@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mg25 - Nuclear Data</title>
+    <!-- Link to detail page stylesheet -->
+    <link rel="stylesheet" href="/static/css/detail.css">
+    <style>
+        /* NEW NAVIGATION BAR STYLES */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* changed from 'left' to 'flex-start' */
+            margin-bottom: 25px;
+            padding: 12px 20px;
+            background: rgba(240, 234, 214, 0.95);
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .nav-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .home-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #6c9ce0, #4a77c9);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .home-link:hover {
+            background: linear-gradient(135deg, #7ca9f0, #5a87d9);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* stack the left nav-group vertically */
+        .nav-bar .nav-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <!-- INSTITUTIONAL LOGOS -->
+    <div class="logos">
+        <img src="/static/images/cern_logo2.png" 
+            alt="CERN Logo" 
+            class="logo"
+            title="European Organization for Nuclear Research">
+        <img src="/static/images/n_TOF_logo.png" 
+            alt="n_TOF Logo" 
+            class="logo"
+            title="Neutron Time-of-Flight Facility at CERN">
+    </div>
+
+    <!-- NEW NAVIGATION BAR -->
+    <div class="nav-bar">
+        <!-- LEFT COLUMN: Back + Home stacked -->
+        <div class="nav-group nav-left">
+            <a class="home-link" 
+               href="../index.html" 
+               title="Start a new search">
+                Home
+            </a>
+            <a class="back-link" 
+               href="../search.html">
+                ← Back to Search Results
+            </a>
+        </div>
+        
+        <div class="nav-group">
+            <!-- Right-side controls (if any) remain empty for now -->
+        </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <h1>Mg25</h1>
+    
+    <!-- DATA DOWNLOAD SECTION -->
+    
+        <p>
+            <a href="n_TOF_data/mg25.txt" download>
+                Download n_TOF MACS Data (Tab-separated ASCII format)
+            </a>
+        </p>
+    
+
+    <!-- METADATA SECTION -->
+    <!-- Displays fundamental properties of the isotope -->
+    <section class="metadata">
+        <h2>Mg25 Basic Properties</h2>
+
+        
+        
+            
+                
+                <p><strong>Q value:</strong> 11.093 [MeV]</p>
+            
+        
+            
+                
+                <p><strong>MACS (n_TOF) @ 30 keV:</strong> 3.9 ± 0.2 [mb]</p>
+            
+        
+            
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                            <p><strong>REF:</strong> (no reference found)</p>
+                        
+                    
+                
+            
+        
+    </section>
+
+    <!-- DATA SOURCE ATTRIBUTION -->
+    <p>
+        Q value obtained from the <a href="https://nds.iaea.org/talys/" target="_blank" rel="noopener noreferrer">TALYS-2.0</a> program.
+    </p>
+
+    <!-- MAIN DATA TABLE -->
+    <!-- Displays ground-state MACS values at different temperatures -->
+    <section class="item-details">
+        <h2>Mg25 Ground-state MACS at Different Temperatures</h2>
+        <table>
+            <thead>
+                <tr>
+                    
+                        <th>kT (keV)</th>
+                    
+                        <th>n_TOF (mb)</th>
+                    
+                        <th>TALYS-2.0 (mb)</th>
+                    
+                        <th>ENDF/B-8.1 (mb)</th>
+                    
+                        <th>JEFF-3.3 (mb)</th>
+                    
+                        <th>JENDL-5 (mb)</th>
+                    
+                        <th>Reaction_rate (cm³/mol/s)</th>
+                    
+                        <th>SEF</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        
+                            <td>30</td>
+                        
+                            <td>3.9 ± 0.2</td>
+                        
+                            <td>5.9</td>
+                        
+                            <td>5.5</td>
+                        
+                            <td>5.5</td>
+                        
+                            <td>5.5</td>
+                        
+                            <td>5.74E+05</td>
+                        
+                            <td>1.00</td>
+                        
+                    </tr>
+                
+            </tbody>
+        </table>
+    </section>
+    
+    <!-- VISUALIZATION SECTION -->
+    <!-- Displays MACS comparison plots if available -->
+    
+    <section class="macs-plot">
+        <h2>MACS Visualization for Mg25</h2>
+
+        <!-- Plot container with side-by-side comparison -->
+        <div class="macs-plot-row">
+            <!-- Left panel: Main MACS plot -->
+            <div class="plot-card">
+                <img 
+                    src="../static/images/mg25_macs.png" 
+                    alt="Ground-state MACS Plot for Mg25"
+                    title="Comparison of MACS values from different sources"
+                >
+                <p class="plot-caption">MACS Comparison</p>
+            </div>
+
+            <!-- Right panel: Ratio plot -->
+            <div class="plot-card">
+                <img 
+                    src="../static/images/ratio/mg25_macs_ratio.png" 
+                    alt="Ratio plot for Mg25"
+                    title="Ratio to reference values"
+                >
+                <p class="plot-caption">Ratio to the n_TOF MACS</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- FOOTER WITH DATA SOURCES AND ATTRIBUTIONS -->
+    <footer>
+        <h3>Data Sources and References</h3>
+        <p>
+            <b>Full list of n_TOF experiment references:</b> 
+            <a href="https://twiki.cern.ch/NTOFPublic/ListOfPublicationsShortLoA" target="_blank" rel="noopener noreferrer">
+                TWiki at CERN
+            </a><br>
+            
+            <b>Reaction rates:</b> Calculated using n_TOF ground state MACS<br>
+            
+            <b>Experimental data (KADoNiS):</b> 
+            <a href="https://exp-astro.physik.uni-frankfurt.de/kadonis/index.php" target="_blank" rel="noopener noreferrer">
+                KADoNiS database
+            </a><br>
+            
+            <b>TALYS MACS values:</b> Calculated with 
+            <a href="https://nds.iaea.org/talys/" target="_blank" rel="noopener noreferrer">
+                TALYS-2.0
+            </a> using default parameters<br>
+            
+            <b>Stellar Enhancement Factor (SEF):</b> Evaluated with TALYS-2.0, by dividing the stellar capture reaction rate to the ground-state rate<br>.
+            
+            <b>Evaluated MACS values:</b> calculated with evaluated cross-sections available from the
+            <a href="https://www-nds.iaea.org/exfor/endf.htm" target="_blank" rel="noopener noreferrer">
+                IAEA database
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

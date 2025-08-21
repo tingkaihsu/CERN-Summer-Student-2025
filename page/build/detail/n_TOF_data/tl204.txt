@@ -1,0 +1,16 @@
+# Tl204 Maxwellian-Averaged Cross Sections (MACS)
+# REF https://dx.doi.org/10.1088/1742-6596/1668/1/012005
+# Cross sections and uncertainties in millibarns (mb)
+# kT [keV]	n_TOF [mb]	± uncertainty [mb]
+5.0	801	203
+8.0	580	168
+10.0	497	147
+15.0	387	121
+20.0	326	108
+25.0	286	95
+30.0	260	90
+40.0	220	83
+50.0	198	74
+60.0	176	66
+80.0	157	62
+100.0	137	66

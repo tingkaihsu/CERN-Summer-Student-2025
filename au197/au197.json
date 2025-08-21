@@ -1,0 +1,57 @@
+[
+    {
+        "column": "n_TOF (mb)",
+        "label": "n_TOF",
+        "color": "green",
+        "marker": "s",
+        "with_unc": true,
+        "line_style": ":",
+        "line_width": 2,
+        "line_alpha": 0.3,
+        "marker_size": 50
+    },
+    {
+        "column": "TALYS-2.0 (mb)",
+        "label": "TALYS-2.0",
+        "color": "blue",
+        "marker": "o",
+        "with_unc": false,
+        "line_style": ":",
+        "line_width": 2,
+        "line_alpha": 0.3,
+        "marker_size": 50
+    },
+    {
+        "column": "ENDF/B-8.1 (mb)",
+        "label": "ENDF/B-8.1 ",
+        "color": "purple",
+        "marker": "^",
+        "with_unc": false,
+        "line_style": ":",
+        "line_width": 2,
+        "line_alpha": 0.3,
+        "marker_size": 50
+    },
+    {
+        "column": "JEFF-3.3 (mb)",
+        "label": "JEFF-3.3 ",
+        "color": "orange",
+        "marker": "x",
+        "with_unc": false,
+        "line_style": ":",
+        "line_width": 2,
+        "line_alpha": 0.3,
+        "marker_size": 50
+    },
+    {
+    "column": "JENDL-5 (mb)",
+    "label": "JENDL-5 ",
+    "color": "pink",
+    "marker": "p",
+    "with_unc": false,
+    "line_style": ":",
+    "line_width": 2,
+    "line_alpha": 0.3,
+    "marker_size": 50
+    }
+]

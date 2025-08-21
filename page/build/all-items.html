@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Isotopes Database</title>
+    <!-- Link to external CSS for consistent styling -->
+    <link rel="stylesheet" href="/static/css/search_results.css">
+    
+    <script>
+        // Format isotope titles like "au197" -> "Au197", "96zr" -> "Zr96"
+        function formatIsotopeTitle(title) {
+            if (!title) return title.trim();
+
+            const t = title.trim();
+
+            // letters followed by digits, e.g. "au197", "tm171", "pb204"
+            let m = t.match(/^([a-zA-Z]+)(\d.*)$/);
+            if (m) {
+                const element = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+                const mass = m[2];
+                return element + mass;
+            }
+
+            // digits followed by letters, e.g. "96Zr" or "96zr"
+            m = t.match(/^(\d+)([a-zA-Z].*)$/);
+            if (m) {
+                const mass = m[1];
+                const element = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
+                return element + mass; // Element first
+            }
+
+            // fallback
+            return t.charAt(0).toUpperCase() + t.slice(1);
+        }
+
+        window.onload = function() {
+            // Retrieve JSON injected by Flask
+            const items = JSON.parse('[{"id": 1, "title": "Au197"}, {"id": 2, "title": "Ce140"}, {"id": 3, "title": "Ge76"}, {"id": 4, "title": "Bi209"}, {"id": 5, "title": "Gd154"}, {"id": 6, "title": "Ge70"}, {"id": 7, "title": "Ge72"}, {"id": 8, "title": "Ge73"}, {"id": 9, "title": "Ge74"}, {"id": 10, "title": "La139"}, {"id": 11, "title": "Mg25"}, {"id": 12, "title": "Ni58"}, {"id": 13, "title": "Ni62"}, {"id": 14, "title": "Ni63"}, {"id": 15, "title": "Os186"}, {"id": 16, "title": "Os187"}, {"id": 17, "title": "Os188"}, {"id": 18, "title": "Pb204"}, {"id": 19, "title": "Pb206"}, {"id": 20, "title": "Pb207"}, {"id": 21, "title": "Se77"}, {"id": 22, "title": "Se78"}, {"id": 23, "title": "Sm151"}, {"id": 24, "title": "Tl204"}, {"id": 25, "title": "Tm171"}, {"id": 26, "title": "Y89"}, {"id": 27, "title": "Zr92"}, {"id": 28, "title": "Zr93"}, {"id": 29, "title": "Zr94"}, {"id": 30, "title": "Zr96"}]');
+
+            // Sort items by element name then mass number
+            items.sort((a, b) => {
+                const aFormatted = formatIsotopeTitle(a.title);
+                const bFormatted = formatIsotopeTitle(b.title);
+
+                // Split into element and mass
+                const aMatch = aFormatted.match(/^([A-Za-z]+)(\d+)$/);
+                const bMatch = bFormatted.match(/^([A-Za-z]+)(\d+)$/);
+
+                if (!aMatch || !bMatch) return aFormatted.localeCompare(bFormatted);
+
+                const [ , aElement, aMass ] = aMatch;
+                const [ , bElement, bMass ] = bMatch;
+
+                if (aElement !== bElement) return aElement.localeCompare(bElement);
+                return parseInt(aMass) - parseInt(bMass);
+            });
+
+            const container = document.getElementById('items-container');
+
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'result-item';
+
+                const displayTitle = formatIsotopeTitle(item.title);
+
+                div.innerHTML = `
+                    <a href="detail/${item.id}.html">
+                        <h3>${displayTitle}</h3>
+                    </a>
+                `;
+                container.appendChild(div);
+            });
+        };
+    </script>
+</head>
+<body>
+    <!-- LOGO SECTION -->
+    <div class="logos">
+        <img src="/static/images/cern_logo2.png" 
+             alt="CERN Logo" 
+             class="logo" 
+             title="European Organization for Nuclear Research" />
+        <img src="/static/images/n_TOF_logo.png" 
+             alt="n_TOF Logo" 
+             class="logo" 
+             title="Neutron Time-of-Flight Facility" />
+    </div>
+
+    <!-- NAVIGATION -->
+    <a href="index.html" 
+       style="color: #3498db; font-size: 1.2em; font-weight: bold;"
+       title="Return to homepage">
+        Home
+    </a>
+
+    <!-- PAGE HEADER -->
+    <h1>All Isotopes Database</h1>
+    
+    <!-- ITEMS CONTAINER -->
+    <div id="items-container" class="results">
+        <!-- JavaScript will populate this container -->
+    </div>
+</body>
+</html>
