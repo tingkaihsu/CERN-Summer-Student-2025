@@ -176,7 +176,60 @@ For many new/modified data, we provide `run_batch.sh` to handle a batch of input
 ```bash
   ./run_batch.sh jobs.txt
 ```
-
+# Example
+The structure looks massive and complicated, so we provide a simple example `b10\` that one can add it to the database, and the modification of old data work in the similar way.
+## Example Input
+In fact, for the required input, the MACS measured at n_TOF `b10.csv` and the plotting configuration `b10.json`, we borrow data from the `au197`.
+Here is just served to provide a typical format of the inputs.
+The MACS at n_TOF should have the following format:
+```bash
+   # Main Publication of the n_TOF Collaboration : <br>Au197(n,g) cross section in the unresolved resonance region<br>C. Lederer, N. Colonna, C. Domingo-Pardo, F. Gunsing, F. Käppeler, C. Massimi, A. Mengoni, A. Wallner, U. Abbondanno, G. Aerts et al. (The n_TOF Collaboration)<br>Physical Review C 83, 034608 (2011)
+   # Comment : <br>n_TOF full energy range
+   # REF https://doi.org/10.1103/PhysRevC.83.034608
+   kT (keV),n_TOF (mb)
+   6.0,1729 ± 61
+   7.0,1550 ± 54
+   8.0,1412 ± 49
+   ...
+```
+Note that the keywords `kT (keV)` and `n_TOF (mb)` should be exactly correct in order for the program to capture the data properly.
+The plotting configuration input is necessary if one would like to specify the consistent plotting style of each sources:
+```json
+   [
+      {
+         "column": "n_TOF (mb)",
+         "label": "n_TOF",
+         "color": "green",
+         "marker": "s",
+         "with_unc": true,
+         "line_style": ":",
+         "line_width": 2,
+         "line_alpha": 0.3,
+         "marker_size": 50
+      },
+      {
+         "column": "TALYS-2.0 (mb)",
+         "label": "TALYS-2.0",
+         "color": "blue",
+         "marker": "o",
+         "with_unc": false,
+         "line_style": ":",
+         "line_width": 2,
+         "line_alpha": 0.3,
+         "marker_size": 50
+      },
+      ...
+   ]
+```
+## Usage
+For this single example, we can use `run.sh`:
+```bash
+./run.sh b 10 0
+```
+## Notes
+After running the script, we recommend the user to check if the code work correctly, here are some points to notice:
+1. 
+2. 
 # Requirements
 
 - Python 3.7+
