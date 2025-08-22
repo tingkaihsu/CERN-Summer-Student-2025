@@ -146,43 +146,38 @@ def build_detail_context_for_item(item):
     # Image checks (only existence checks, no url_for())
     title_slug = item['title'].lower()
     macs_filename = f"{title_slug}_macs.png"
-    ratio_candidate1 = f"{title_slug}_macs_ratio.png"
-    ratio_candidate2 = f"{title_slug}_ratio.png"
+    ratio_candidate = f"{title_slug}_macs_ratio.png"
 
     img_candidates = []
     if freezer_dest:
         img_candidates.append(os.path.join(root_dir, freezer_dest, 'static', 'images', macs_filename))
-        img_candidates.append(os.path.join(root_dir, freezer_dest, 'static', 'images', 'ratio', ratio_candidate1))
-        img_candidates.append(os.path.join(root_dir, freezer_dest, 'static', 'images', 'ratio', ratio_candidate2))
+        img_candidates.append(os.path.join(root_dir, freezer_dest, 'static', 'images', 'ratio', ratio_candidate))
         img_candidates.append(os.path.join(freezer_dest, 'static', 'images', macs_filename))
-        img_candidates.append(os.path.join(freezer_dest, 'static', 'images', 'ratio', ratio_candidate1))
-        img_candidates.append(os.path.join(freezer_dest, 'static', 'images', 'ratio', ratio_candidate2))
+        img_candidates.append(os.path.join(freezer_dest, 'static', 'images', 'ratio', ratio_candidate))
 
     img_candidates.append(os.path.join(root_dir, 'static', 'images', macs_filename))
-    img_candidates.append(os.path.join(root_dir, 'static', 'images', 'ratio', ratio_candidate1))
-    img_candidates.append(os.path.join(root_dir, 'static', 'images', 'ratio', ratio_candidate2))
+    img_candidates.append(os.path.join(root_dir, 'static', 'images', 'ratio', ratio_candidate))
     img_candidates.append(os.path.join(root_dir, 'page', 'static', 'images', macs_filename))
-    img_candidates.append(os.path.join(root_dir, 'page', 'static', 'images', 'ratio', ratio_candidate1))
-    img_candidates.append(os.path.join(root_dir, 'page', 'static', 'images', 'ratio', ratio_candidate2))
+    img_candidates.append(os.path.join(root_dir, 'page', 'static', 'images', 'ratio', ratio_candidate))
 
     macs_exists = any(os.path.exists(p) for p in img_candidates if p.endswith(macs_filename))
     ratio_in_ratio_subfolder = any(
-        (p.endswith(os.path.join('ratio', ratio_candidate1)) or p.endswith(os.path.join('ratio', ratio_candidate2)))
+        (p.endswith(os.path.join('ratio', ratio_candidate)))
         or ('/ratio/' in p.replace('\\','/'))  # handle different path styles
         for p in img_candidates if os.path.exists(p)
     )
     ratio_in_images_root = any(
-        (p.endswith(ratio_candidate1) or p.endswith(ratio_candidate2))
+        (p.endswith(ratio_candidate))
         for p in img_candidates if os.path.exists(p)
     )
     ratio_exists = ratio_in_ratio_subfolder or ratio_in_images_root
 
     # choose which ratio filename to advertise (prefer candidate1)
     chosen_ratio_filename = None
-    if any(os.path.exists(p) for p in img_candidates if p.endswith(ratio_candidate1)):
-        chosen_ratio_filename = ratio_candidate1
-    elif any(os.path.exists(p) for p in img_candidates if p.endswith(ratio_candidate2)):
-        chosen_ratio_filename = ratio_candidate2
+    if any(os.path.exists(p) for p in img_candidates if p.endswith(ratio_candidate)):
+        chosen_ratio_filename = ratio_candidate
+    else:
+        pass
 
     return dict(
         item=item,
@@ -388,6 +383,30 @@ def copy_n_tof_data(isotope=None):
         #             shutil.copy2(src_path, dst_path)
         #             print(f"Copied: {item}")
         pass
+
+def render_all_items_html_to_build(build_root=None):
+    """Render all_items.html into build/all-items.html (static output).
+    Uses app.app_context() so render_template/url_for work without an active request.
+    """
+    build_root = build_root or app.config.get('FREEZER_DESTINATION') or os.path.join(os.path.dirname(__file__), 'build')
+    os.makedirs(build_root, exist_ok=True)
+
+    # When building a static file, it's usually best to use relative links in templates.
+    # If your template expects a route name instead of a relative path, pass in search_url etc.
+    with app.app_context():
+        html = render_template(
+            'all_items.html',
+            items_json=json.dumps(ITEMS),
+            # provide a simple relative path for search/index if the template uses it
+            search_url="../search.html",
+            index_url="../index.html"
+        )
+
+    out_path = os.path.join(build_root, 'all-items.html')
+    with open(out_path, 'w', encoding='utf-8') as fh:
+        fh.write(html)
+    print(f"Wrote all-items page -> {out_path}")
+    return out_path
 
 # ----------------------------
 # FLASK ROUTES
@@ -609,6 +628,11 @@ if __name__ == '__main__':
             print(f"Failed to render detail page for id={found_item['id']}: {e}")
             raise
 
+        # ALSO update the all-items list (static) so it reflects the changed item
+        try:
+            render_all_items_html_to_build(build_root=app.config.get('FREEZER_DESTINATION', build_dir))
+        except Exception as e:
+            print(f"Failed to render all-items.html: {e}")
         print("Selective detail page update completed.")
         sys.exit(0)
     

@@ -152,9 +152,9 @@ def write_results_to_csv(element, mass, results):
 
     with open(lab_file, 'w') as f:
         
-        f.write("# Q [MeV]: {}\n".format(data['Q_value']))
+        f.write("# Q (MeV): {}\n".format(data['Q_value']))
 
-        f.write("kT[keV],LAB_MACS[mb]\n")
+        f.write("kT (keV),LAB_MACS(mb)\n")
         i = 0
         for kT, lab_macs, _, _ in results:
             kT = kT_list[i]*1000
@@ -165,7 +165,7 @@ def write_results_to_csv(element, mass, results):
     sef_file = os.path.join(folder_name, f"{element}{mass}_SEF.csv")
     with open(sef_file, 'w') as f:
         i = 0
-        f.write("kT[keV],SEF\n")
+        f.write("kT (keV),SEF\n")
         for kT, _, _, sef in results:
             kT = kT_list[i]*1000
             f.write(f"{kT:.1f},{sef:.2f}\n")
@@ -186,7 +186,7 @@ def write_results_to_csv(element, mass, results):
 #     # Write LAB-MACS data
 #     lab_file = os.path.join(folder_name, f"{element.lower()}{mass}_LAB_MACS.csv")
 #     with open(lab_file, 'w') as f:
-#         f.write("kT[keV],LAB_MACS[mb]\n")
+#         f.write("kT(keV),LAB_MACS(mb)\n")
 #         i = 0
 #         for kT, lab_macs, _, _ in results:
 #             # Convert back to keV for storage
@@ -198,7 +198,7 @@ def write_results_to_csv(element, mass, results):
 #     sef_file = os.path.join(folder_name, f"{element.lower()}{mass}_SEF.csv")
 #     with open(sef_file, 'w') as f:
 #         i = 0
-#         f.write("kT[keV],SEF\n")
+#         f.write("kT (keV),SEF\n")
 #         for kT, _, _, sef in results:
 #             # Convert back to keV for storage
 #             kT = kT_list[i]*1000
@@ -515,7 +515,7 @@ def evaluation(element, mass, labname):
     for temp in temp_list:
         integral = read_data_and_integrate(element, mass, labname, temp)
         results.append((temp, integral))
-        print(f"Energy (keV): {temp*1000.0}, Weighted Integral (mb): {integral}")
+        print(f"kT (keV): {temp*1000.0}, Weighted Integral (mb): {integral}")
     
     # Save results
     folder_name = f"{element}{mass}"
@@ -525,7 +525,7 @@ def evaluation(element, mass, labname):
     
     with open(output_filename, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Energy (keV)", " MACS (mb)"])
+        writer.writerow(["kT (keV)", " MACS (mb)"])
         for temp, integral in results:
             # Round temperature to nearest 0.5 keV
             _temp = float(math.floor(temp*1000.0*2.0))/2.0
@@ -1085,14 +1085,14 @@ def convert_nTOF_data_dynamic_ref(element, mass, base_output_dir="page/n_TOF_dat
             ref_line = hl
             break
     if not ref_line:
-        ref_line = f"# REF: (no reference found)"
+        ref_line = f"# REF: (no reference found)\n"
 
     # Compose output header lines
     output_lines = [
         first_line,
         ref_line,
         "# Cross sections and uncertainties in millibarns (mb)",
-        "# kT [keV]\tn_TOF [mb]\t± uncertainty [mb]"
+        "# kT (keV)\tn_TOF (mb)\t± uncertainty (mb)"
     ]
 
     # Read data lines with csv.DictReader
@@ -1128,7 +1128,7 @@ def merge(element, mass):
     """
     output_file = "page/static/all_nTOF_MACS.txt"
     elementmass = f"{element}{mass}"
-    header_string = f"# kT [keV]\t{elementmass}_macs [mb]\tunc [mb]"
+    header_string = f"# kT (keV)\t{elementmass}_macs (mb)\tunc (mb)"
 
     dir_path = os.path.join('page/n_TOF_data')
     input_filename = os.path.join(dir_path, f"{elementmass}.txt")
@@ -1144,7 +1144,7 @@ def merge(element, mass):
     with open(input_filename, 'r') as fin:
         for line in fin:
             if line.startswith('#'):
-                if "kT [keV]" in line:
+                if "kT (keV)" in line:
                     found_header = True
                 continue
             if found_header and line.strip():
@@ -1162,7 +1162,7 @@ def merge(element, mass):
     if os.path.exists(output_file):
         with open(output_file, 'r') as f:
             for line in f:
-                if line.startswith('#') and "kT [keV]" in line:
+                if line.startswith('#') and "kT (keV)" in line:
                     # New block starting
                     if current_block:
                         blocks.append(current_block)
