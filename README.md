@@ -228,8 +228,17 @@ For this single example, we can use `run.sh`:
 ```
 ## Notes
 After running the script, we recommend the user to check if the code work correctly, here are some points to notice:
-1. 
-2. 
+
+1. There should be four new-generated/new-modified files in the folder `/main/page/build/`, and they are
+   - `{id}.html` in `/main/page/build/detail`
+   - `{element}{mass}.txt` in `/main/page/build/detail/n_TOF_data/`
+   - `{element}{mass}_macs.png` in `/main/page/build/static/images/`
+   - `{element}{mass}_macs_ratio.png` in `/main/page/build/static/images/ratio/`
+2. There should be some files modified according to new added data (not necessary for modified old data), and they are,
+   - `items.csv` in `/main/page/`. And in general, one should update it to the current database after adding new data.
+   - `all_nTOF_MACS.txt` in `/main/page/build/static/`
+   - `items.json` in `/main/page/build/`
+   - `all-items.html` in `/main/page/build/`
 # Requirements
 
 - Python 3.7+
