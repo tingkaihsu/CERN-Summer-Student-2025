@@ -22,6 +22,7 @@ labs=('ENDF/B-VIII.1' 'JEFF-3.3' 'JENDL-5')
 
 # Ensure logs directory exists
 mkdir -p logs
+cp page/build/items.csv page/
 
 # Counters
 total=0
@@ -107,7 +108,7 @@ done < "$JOBS_FILE"
 
 echo
 echo "========================================"
-echo "Batch summary: total=$total, success=$success, failures=$failures"
+echo "Batch summary: total=$total, failures=$failures"
 echo "Logs saved in: ./logs/"
 echo "========================================"
 
@@ -121,5 +122,7 @@ echo "========================================"
 # else
 #     echo "Skipping web app launch (--no-web specified)."
 # fi
+
+cp page/items.csv page/build/
 
 exit 0

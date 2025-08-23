@@ -308,7 +308,7 @@ def copy_static_files(isotope=None):
     if isotope:
         isotope_files = [
             f"{isotope}_macs.png",
-            f"{isotope}_ratio.png",       # ✅ corrected naming convention
+            f"{isotope}_macs_ratio.png",       # ✅ corrected naming convention
         ]
     
     # Recursive copy preserving directory structure
@@ -407,6 +407,19 @@ def render_all_items_html_to_build(build_root=None):
         fh.write(html)
     print(f"Wrote all-items page -> {out_path}")
     return out_path
+
+def render_items_json_to_build(build_root=None):
+    """Write items.json into the build folder."""
+    build_root = build_root or app.config.get('FREEZER_DESTINATION') or os.path.join(os.path.dirname(__file__), 'build')
+    os.makedirs(build_root, exist_ok=True)
+
+    out_path = os.path.join(build_root, 'items.json')
+    with open(out_path, 'w', encoding='utf-8') as fh:
+        json.dump(ITEMS, fh, ensure_ascii=False, indent=2)
+
+    print(f"Wrote items.json -> {out_path}")
+    return out_path
+
 
 # ----------------------------
 # FLASK ROUTES
@@ -634,6 +647,14 @@ if __name__ == '__main__':
         except Exception as e:
             print(f"Failed to render all-items.html: {e}")
         print("Selective detail page update completed.")
+
+        # ALSO update the items.json file (static)
+        try:
+            render_items_json_to_build(build_root=app.config.get('FREEZER_DESTINATION', build_dir))
+        except Exception as e:
+            print(f"Failed to render items.json: {e}")
+
+
         sys.exit(0)
     
     # Prepare build directory

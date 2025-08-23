@@ -35,6 +35,9 @@ labs=('ENDF/B-VIII.1' 'JEFF-3.3' 'JENDL-5')
 #   - Extracts MACS values from nuclear data libraries
 #   - Generates CSV database entry
 #   - Applies energy format conversion using the hint
+
+cp page/build/items.csv page/
+
 echo "Processing nuclear data for ${element}${mass}..."
 python3 script.py "$element" "$mass" "$format_hint" "${labs[@]}"
 
@@ -56,3 +59,5 @@ python3 plot_MACS.py "$element" "$mass"
 echo "Launching visualization web app..."
 cd page/
 python3 app.py "$element" "$mass"
+
+cp items.csv build/
